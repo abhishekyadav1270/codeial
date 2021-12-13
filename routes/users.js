@@ -1,11 +1,14 @@
 const express=require("express");
-const userController = require('../controllers/users_controller')
-
 const router =  express.Router();
 
-router.get('/profile' ,userController.profile);
+const usersController = require('../controllers/users_controller')
+
+
+router.get('/profile' ,usersController.profile);
 
 console.log("router loaded");
 
+router.get('/sign-up', usersController.signUp);
+router.get('/sign-in', usersController.signIn);
 
 module.exports=router;

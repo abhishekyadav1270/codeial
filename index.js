@@ -2,7 +2,9 @@ const express= require('express');
 const app=express();
 const port =8000;
 const expressLayout= require('express-ejs-layouts');
-
+const dotenv =require("dotenv");
+const dbConnect=require("./config/dbConnect");
+dotenv.config({path:"config/config.env"});
 
 app.use(express.static('./assets'));
 app.use(expressLayout);
@@ -17,6 +19,7 @@ app.set('layout extractScripts',true);
 app.set('view engine','ejs');
 app.set('views' , './views');
 
+dbConnect();
 
 app.listen(port ,  function(err){
     if(err){
